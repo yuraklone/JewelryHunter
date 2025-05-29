@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         //左右のキーが押されたら、どちらの値緒だったのかをaxisHに格納
         //Horisontal：水平方向のキーが押された場合の引数
         //左なら-1,右なら1,何も押されていないなら0を返すメソッド
-        axisH = Input.GetAxisRaw("Horisontal");
+        axisH = Input.GetAxisRaw("Horizontal");
 
         //velocityに2軸の方向データ(Vector2)を代入
         rbody.velocity = new Vector2(axisH * speed,rbody.velocity.y);
