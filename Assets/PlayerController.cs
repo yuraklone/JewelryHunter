@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
         //左なら-1,右なら1,何も押されていないなら0を返すメソッド
         axisH = Input.GetAxisRaw("Horizontal");
 
-        //velocityに2軸の方向データ(Vector2)を代入
-        rbody.velocity = new Vector2(axisH * speed,rbody.velocity.y);
 
     }
 
