@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private float axisH; //左右のキーの値を格納する変数
     Rigidbody2D rbody; //Rigidbody2Dを扱うための媒体
+    Animator animator; //Animatorの情報を扱うための媒体
     public float speed = 3.0f; //歩くスピード
     bool isJump; //ジャンプ中かどうか
     bool onGround; //地面判定
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     {
         //PlayerについているRigidbody2Dコンポーネントを変数rbodyに宿す
         rbody = GetComponent<Rigidbody2D>();
+        //PlayerについているAnimatorコンポーネントを変数animatorに宿す
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(1,1,1);
             //this.gameObject.GetComponent<Transform>().localScaleの略形
+            animator.SetBool("run", true); //担当しているコント委ローラーのパラメータを変える
         }
 
 
@@ -40,6 +44,12 @@ public class PlayerController : MonoBehaviour
         else if(axisH < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            animator.SetBool("run", true); //担当しているコント委ローラーのパラメータを変える
+        }
+
+        else
+        {
+            animator.SetBool("run", false); //担当しているコント委ローラーのパラメータを変える
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -76,7 +86,26 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if(onGround)
-        isJump = true;
+        if (onGround)
+        {
+            isJump = true;
+            animator.SetTrigger("jump"); //ジャンプアニメのためのトリガー発動
+        }
     }
+    //何かとぶつかったら発動するメソッド
+    //ぶつかった相手のCollider情報を引数collisionに入れる
+    //※相手にColliderがついていないと意味がない、かつ相手のColliderがIsTriggerであること
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Goal")
+        {
+            GameController.gameState = "gameclear";
+        }
+        if(collision.gameObject.tag == "Dead")
+        {
+            GameController.gameState = "gameover";
+        }
+    }
+
+
 }
