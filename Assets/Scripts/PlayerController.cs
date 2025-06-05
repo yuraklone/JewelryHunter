@@ -9,10 +9,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rbody; //Rigidbody2Dを扱うための媒体
     Animator animator; //Animatorの情報を扱うための媒体
     public float speed = 3.0f; //歩くスピード
+    public float jump; //ジャンプ力
     bool isJump; //ジャンプ中かどうか
     bool onGround; //地面判定
     public LayerMask groundLayer; //地面判定の対象のレイヤーが何かを決めておく
-    public float jump; //ジャンプ力
+    
 
     // Start is called before the first frame update
     void Start()
