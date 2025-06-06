@@ -26,7 +26,7 @@ public class CannonController : MonoBehaviour
     void Update()
     {
         //経過時間の観測
-        pastTime = Time.deltaTime;
+        pastTime += Time.deltaTime;
 
 
         //Playerとの距離チェック
@@ -44,12 +44,16 @@ public class CannonController : MonoBehaviour
                 
                 //キャノンの傾きを取得
                 float angleZ = transform.localEulerAngles.z;
-                float x = Mathf.Cos(angleZ*Mathf.Deg2Rad);
-                float y = Mathf.Sin(angleZ*Mathf.Deg2Rad);
+                float x = Mathf.Cos(angleZ*Mathf.Deg2Rad); //Deg2Radはラジアン変換
+                float y = Mathf.Sin(angleZ*Mathf.Deg2Rad); //Deg2Radはラジアン変換
                 Vector2 v = new Vector2(x, y) * fireSpeed;
 
                 //砲弾自身のRigidbodyの力で砲弾を飛ばす
                 rbody.AddForce(v, ForceMode2D.Impulse);
+
+
+
+
 
             }
         }

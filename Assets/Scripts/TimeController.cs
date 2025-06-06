@@ -37,7 +37,7 @@ public class TimeController : MonoBehaviour
         }
 
         //コンソールに情報出力
-        Debug.Log("残り時間" + currentTime);
+        //Debug.Log("残り時間" + currentTime);
 
     }
 }
