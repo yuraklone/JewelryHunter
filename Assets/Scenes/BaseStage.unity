@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcda4829dff15da418c32f0ec08b7736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: BaseStage
+  sceneName: Result
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 619394800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -808,11 +808,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.49
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1130,11 +1130,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.052355
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.52
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3419111472934684578, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2051,6 +2051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2107,6 +2111,10 @@ PrefabInstance:
     - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_Name
       value: ground (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2298,6 +2306,10 @@ PrefabInstance:
     - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_Name
       value: ground (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2763,6 +2775,10 @@ PrefabInstance:
       propertyPath: subScreen
       value: 
       objectReference: {fileID: 548610460}
+    - target: {fileID: 8277649119288036729, guid: e88f3d828223afe488b811fc8be16664, type: 3}
+      propertyPath: isForceScrollX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8306690882110764221, guid: e88f3d828223afe488b811fc8be16664, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2881,6 +2897,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: block1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 1185617904940286832, guid: e128fd0665bf7a247845d1e7b4c8c265, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038905587725991136, guid: e128fd0665bf7a247845d1e7b4c8c265, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2998,6 +3022,10 @@ PrefabInstance:
     - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
       propertyPath: m_Name
       value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568975247379029300, guid: e56323a2157c01348be6eae6be006cbe, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3354,9 +3382,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 91975536424186112, guid: ba792964e498c224c8efbbc9a9add1d0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 948644404297673536, guid: ba792964e498c224c8efbbc9a9add1d0, type: 3}
       propertyPath: m_Name
       value: block2x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948644404297673536, guid: ba792964e498c224c8efbbc9a9add1d0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1337921636857008562, guid: ba792964e498c224c8efbbc9a9add1d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3471,6 +3507,10 @@ PrefabInstance:
     - target: {fileID: 4001923655455405492, guid: 26b55244569bb2945a9008622e510fdb, type: 3}
       propertyPath: m_Name
       value: block1x2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001923655455405492, guid: 26b55244569bb2945a9008622e510fdb, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 6125772911201612872, guid: 26b55244569bb2945a9008622e510fdb, type: 3}
       propertyPath: m_LocalPosition.x
