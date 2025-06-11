@@ -6,38 +6,45 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public static string gameState; //ƒQ[ƒ€‚Ìó‘Ô‚ğŠÇ—‚·‚é ¦Ã“I•Ï”
+    public static string gameState; //ã‚²ãƒ¼ãƒ ã®çŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹ â€»é™çš„å¤‰æ•°
 
-    public GameObject stageTitle; //ƒXƒe[ƒWƒ^ƒCƒgƒ‹‚ÌUIƒIƒuƒWƒFƒNƒg
-    public Sprite gameClearSprite; //ƒQ[ƒ€ƒNƒŠƒA‚ÌŠG
-    public Sprite gameOverSprite; //ƒQ[ƒ€ƒI[ƒo[‚ÌŠG
+    public GameObject stageTitle; //ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«ã®UIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    public Sprite gameClearSprite; //ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã®çµµ
+    public Sprite gameOverSprite; //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã®çµµ
 
-    public GameObject buttonPanel; //ƒ{ƒ^ƒ“ƒpƒlƒ‹‚ÌUIƒIƒuƒWƒFƒNƒg
-    public GameObject restartButton; //ƒŠƒXƒ^[ƒgƒ{ƒ^ƒ“
-    public GameObject nextButton; //ƒlƒNƒXƒgƒ{ƒ^ƒ“
+    public GameObject buttonPanel; //ãƒœã‚¿ãƒ³ãƒ‘ãƒãƒ«ã®UIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    public GameObject restartButton; //ãƒªã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³
+    public GameObject nextButton; //ãƒã‚¯ã‚¹ãƒˆãƒœã‚¿ãƒ³
 
-    TimeController timeCnt; //TimeControllerƒXƒNƒŠƒvƒg‚ğæ“¾‚·‚é
+    TimeController timeCnt; //TimeControllerã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å–å¾—ã™ã‚‹
 
-    public TextMeshProUGUI timeText; //TimeTextƒIƒuƒWƒFƒNƒg‚ª‚Á‚Ä‚¢‚éTextMeshProƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
+    public TextMeshProUGUI timeText; //TimeTextã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒã£ã¦ã„ã‚‹TextMeshProã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
 
-    public TextMeshProUGUI scoreText; //UI‚ÌƒeƒLƒXƒg
-    public static int totalScore; //ƒQ[ƒ€‘S‘Ì‚Ì‡ŒvƒXƒRƒA
-    public static int stageScore; //ƒXƒe[ƒW’†‚Éè‚É“ü‚ê‚½ƒXƒRƒA
+    public TextMeshProUGUI scoreText; //UIã®ãƒ†ã‚­ã‚¹ãƒˆ
+    public static int totalScore; //ã‚²ãƒ¼ãƒ å…¨ä½“ã®åˆè¨ˆã‚¹ã‚³ã‚¢
+    public static int stageScore; //ã‚¹ãƒ†ãƒ¼ã‚¸ä¸­ã«æ‰‹ã«å…¥ã‚ŒãŸã‚¹ã‚³ã‚¢
 
+    AudioSource audio; //AudioSourceã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—
+    public AudioClip meGameClear;
+    public AudioClip meGameOver;
+
+    public GameObject mobilePanel; //ãƒ¢ãƒã‚¤ãƒ«ãƒ‘ãƒãƒ«ã®å–å¾—
 
     // Start is called before the first frame update
     void Start()
-    {
-        stageScore = 0; //ƒXƒe[ƒWƒXƒRƒA‚ğƒŠƒZƒbƒg
 
-        //ƒXƒ^[ƒg‚Æ“¯‚ÉƒXƒe[ƒ^ƒX‚ğplaying‚É‚·‚é
+
+    {
+        stageScore = 0; //ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¹ã‚³ã‚¢ã‚’ãƒªã‚»ãƒƒãƒˆ
+
+        //ã‚¹ã‚¿ãƒ¼ãƒˆã¨åŒæ™‚ã«ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’playingã«ã™ã‚‹
         gameState = "playing";
 
-        Invoke("InactiveImage", 1.0f); //‘æˆêˆø”‚Éw’è‚µ‚½ƒƒ\ƒbƒh‚ğ‘æ“ñˆø”•bŒã‚É”­“®
+        Invoke("InactiveImage", 1.0f); //ç¬¬ä¸€å¼•æ•°ã«æŒ‡å®šã—ãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç¬¬äºŒå¼•æ•°ç§’å¾Œã«ç™ºå‹•
         
         buttonPanel.SetActive(false);
 
-        //TiomeContorollerƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìî•ñ‚ğæ“¾
+        //TiomeContorollerã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æƒ…å ±ã‚’å–å¾—
         timeCnt = GetComponent<TimeController>();
     }
 
@@ -48,42 +55,56 @@ public class GameController : MonoBehaviour
 
         if(gameState == "playing")
         {
-            //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚Ì•Ï”currentTime‚ğUI‚É˜A“®
+            //ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ã®å¤‰æ•°currentTimeã‚’UIã«é€£å‹•
             
-            //timeCnt‚ÌcurrentTime(floatŒ^)‚ğintŒ^‚É•ÏŠ·‚µA
-            //ToString‚ÅString‚É•ÏŠ·‚µ‚Ä‚©‚çtimeText(TextMeshPro)‚Ìtext—“‚É‘ã“ü
+            //timeCntã®currentTime(floatå‹)ã‚’intå‹ã«å¤‰æ›ã—ã€
+            //ToStringã§Stringã«å¤‰æ›ã—ã¦ã‹ã‚‰timeText(TextMeshPro)ã®textæ¬„ã«ä»£å…¥
             timeText.text = ((int)timeCnt.currentTime).ToString();
 
-            //‚à‚µcurrentTime‚ª0‚É‚È‚Á‚½‚çƒQ[ƒ€ƒI[ƒo[
+            //ã‚‚ã—currentTimeãŒ0ã«ãªã£ãŸã‚‰ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
             if(timeCnt.currentTime <= 0)
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Player"); //ƒvƒŒƒCƒ„[‚ğ’T‚·
-                //PlayerControllerƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌGameOverƒƒ\ƒbƒh‚ğ”­“®
+                GameObject player = GameObject.FindGameObjectWithTag("Player"); //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’æ¢ã™
+                //PlayerControllerã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®GameOverãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç™ºå‹•
                 player.GetComponent<PlayerController>().GameOver(); 
             }
 
         }
 
-        //ƒQ[ƒ€ó‘Ô‚ªƒNƒŠƒAorƒI[ƒo[‚ÌA
+        //ã‚²ãƒ¼ãƒ çŠ¶æ…‹ãŒã‚¯ãƒªã‚¢orã‚ªãƒ¼ãƒãƒ¼ã®æ™‚ã€
         else if (gameState == "gameclear" || gameState == "gameover")
         {
-            //ƒXƒe[ƒWƒ^ƒCƒgƒ‹‚ğ•œŠˆ
+            mobilePanel.SetActive(false);
+
+            audio = GetComponent<AudioSource>();
+
+            //ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¾©æ´»
             stageTitle.SetActive(true);
             stageTitle.GetComponent<Image>().sprite = gameClearSprite;
 
 
-            //ƒ{ƒ^ƒ“‚Ì•œŠˆ
+            //ãƒœã‚¿ãƒ³ã®å¾©æ´»
             buttonPanel.SetActive(true);
+
+            audio.Stop(); //æ›²ã‚’æ­¢ã‚ã‚‹
+
 
             if (gameState == "gameclear")
             {
                 stageTitle.GetComponent<Image>().sprite = gameClearSprite;
-                //restartButtonƒIƒuƒWƒFƒNƒg‚ª‚Á‚Ä‚¢‚éButtonƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’l‚Å‚ ‚éinteractable‚ğfalse¨‹@”\‚ğ’â~
+                //restartButtonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒã£ã¦ã„ã‚‹Buttonã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å€¤ã§ã‚ã‚‹interactableã‚’falseâ†’æ©Ÿèƒ½ã‚’åœæ­¢
                 restartButton.GetComponent<Button>().interactable = false;
 
-                totalScore += stageScore; //ƒg[ƒ^ƒ‹ƒXƒRƒA‚ÌXV
-                stageScore = 0; //Ÿ‚É”õ‚¦‚Ä0‚ÉƒŠƒZƒbƒg
-                totalScore += (int)(timeCnt.currentTime * 10); //ƒ^ƒCƒ€ƒ{[ƒiƒX‚ğƒg[ƒ^ƒ‹‚É‰Á‚¦‚é
+                totalScore += stageScore; //ãƒˆãƒ¼ã‚¿ãƒ«ã‚¹ã‚³ã‚¢ã®æ›´æ–°
+                stageScore = 0; //æ¬¡ã«å‚™ãˆã¦0ã«ãƒªã‚»ãƒƒãƒˆ
+                totalScore += (int)(timeCnt.currentTime * 10); //ã‚¿ã‚¤ãƒ ãƒœãƒ¼ãƒŠã‚¹ã‚’ãƒˆãƒ¼ã‚¿ãƒ«ã«åŠ ãˆã‚‹
+
+                
+                //audio.clip = meGameClear; //æ›²åˆ‡ã‚Šæ›¿ãˆ
+                //audio.loop = false; //ãƒ«ãƒ¼ãƒ—ã‚’ã‚ªãƒ•
+                //audio.Play(); //æ›²å†ç”Ÿ
+                audio.PlayOneShot(meGameClear); //ä¸€å›ã ã‘å†ç”Ÿ
+
 
 
             }
@@ -91,29 +112,35 @@ public class GameController : MonoBehaviour
             else if (gameState == "gameover")
             {
                 stageTitle.GetComponent<Image>().sprite = gameOverSprite;
-                //nextButtonƒIƒuƒWƒFƒNƒg‚ª‚Á‚Ä‚¢‚éButtonƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’l‚Å‚ ‚éinteractable‚ğfalse¨‹@”\‚ğ’â~
+                //nextButtonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒã£ã¦ã„ã‚‹Buttonã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å€¤ã§ã‚ã‚‹interactableã‚’falseâ†’æ©Ÿèƒ½ã‚’åœæ­¢
                 nextButton.GetComponent<Button>().interactable = false;
 
-
+                audio.PlayOneShot(meGameOver);//ä¸€å›ã ã‘å†ç”Ÿ
 
             }
 
-            gameState = "gameend"; //d•¡‚µ‚Äˆ—‚ğs‚í‚È‚¢‚æ‚¤‚Éó‘Ô‚ğ‘JˆÚ
+            gameState = "gameend"; //é‡è¤‡ã—ã¦å‡¦ç†ã‚’è¡Œã‚ãªã„ã‚ˆã†ã«çŠ¶æ…‹ã‚’é·ç§»
 
         }
 
 
     }
 
-    void InactiveImage()@//ƒXƒe[ƒWƒ^ƒCƒgƒ‹‚ğ”ñ•\¦‚É‚·‚éƒƒ\ƒbƒh
+    void InactiveImage()ã€€//ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
     {
-        stageTitle.SetActive(false); //ƒIƒuƒWƒFƒNƒg‚ğ”ñ•\¦
+        stageTitle.SetActive(false); //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’éè¡¨ç¤º
     }
 
     void UpdateScore()
     {
-        //UI‚Å‚ ‚éƒXƒRƒAƒeƒLƒXƒg‚Éƒg[ƒ^ƒ‹‚ÆƒXƒe[ƒW‚Ì‡Œv’l‚ğ‘ã“ü
+        //UIã§ã‚ã‚‹ã‚¹ã‚³ã‚¢ãƒ†ã‚­ã‚¹ãƒˆã«ãƒˆãƒ¼ã‚¿ãƒ«ã¨ã‚¹ãƒ†ãƒ¼ã‚¸ã®åˆè¨ˆå€¤ã‚’ä»£å…¥
         scoreText.text = (stageScore + totalScore).ToString();
 
+    }
+
+    public void PlayerJump()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().Jump();
     }
 }

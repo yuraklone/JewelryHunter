@@ -1,30 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.XR;
+using UnityEngine.XR;
 using UnityEngine;
 
 public class MovingBlock : MonoBehaviour
 {
-    public float moveX = 3.0f; //X•ûŒü‚Ö‚ÌˆÚ“®‹——£
-    public float moveY = 3.0f; //Y•ûŒü‚Ö‚ÌˆÚ“®‹——£
-    public float times = 3.0f; //‰½•b‚ÅˆÚ“®‚·‚é‚©
-    public float wait = 1.0f; //Ü‚è•Ô‚µ‚ÌƒCƒ“ƒ^[ƒoƒ‹
+    public float moveX = 3.0f; //Xæ–¹å‘ã¸ã®ç§»å‹•è·é›¢
+    public float moveY = 3.0f; //Yæ–¹å‘ã¸ã®ç§»å‹•è·é›¢
+    public float times = 3.0f; //ä½•ç§’ã§ç§»å‹•ã™ã‚‹ã‹
+    public float wait = 1.0f; //æŠ˜ã‚Šè¿”ã—ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«
 
-    float distance; //ŠJn’n“_‚ÆˆÚ“®—\’è’n“_‚Ì·
-    float secoindsDistance; //1•b‚ ‚½‚è‚ÌˆÚ“®—\’è‹——£
-    float framsDistance; //1ƒtƒŒ[ƒ€‚ ‚½‚è‚ÌˆÚ“®‹——£
-    float movePercentage = 0; //–Ú•W‚Ü‚Å‚Ç‚Ì‚­‚ç‚¢“®‚¢‚Ä‚¢‚é‚Ì‚©
+    float distance; //é–‹å§‹åœ°ç‚¹ã¨ç§»å‹•äºˆå®šåœ°ç‚¹ã®å·®
+    float secoindsDistance; //1ç§’ã‚ãŸã‚Šã®ç§»å‹•äºˆå®šè·é›¢
+    float framsDistance; //1ãƒ•ãƒ¬ãƒ¼ãƒ ã‚ãŸã‚Šã®ç§»å‹•è·é›¢
+    float movePercentage = 0; //ç›®æ¨™ã¾ã§ã©ã®ãã‚‰ã„å‹•ã„ã¦ã„ã‚‹ã®ã‹
 
-    bool isCanMove = true; //“®‚¢‚ÄOK‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
-    Vector3 startPos; //ƒuƒƒbƒN‚Ì‰ŠúˆÊ’u
-    Vector3 endPos; //ˆÚ“®Œã‚Ì—\’èˆÊ’u
-    bool isReverse; //•ûŒü”½“]ƒtƒ‰ƒO
+    bool isCanMove = true; //å‹•ã„ã¦OKã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
+    Vector3 startPos; //ãƒ–ãƒ­ãƒƒã‚¯ã®åˆæœŸä½ç½®
+    Vector3 endPos; //ç§»å‹•å¾Œã®äºˆå®šä½ç½®
+    bool isReverse; //æ–¹å‘åè»¢ãƒ•ãƒ©ã‚°
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position; //‰ŠúˆÊ’u‚ğ‘ã“ü
+        startPos = transform.position; //åˆæœŸä½ç½®ã‚’ä»£å…¥
         endPos = new Vector2(startPos.x + moveX, startPos.y + moveY);
 
     }
@@ -39,9 +39,9 @@ public class MovingBlock : MonoBehaviour
 
         else
         {
-            distance = Vector2.Distance(startPos, endPos); //‰ŠúˆÊ’u‚ÆˆÚ“®ŒãˆÊ’u‚Ì‹——£‚ğ‘ã“ü
-            secoindsDistance = distance / times ; //ˆÚ“®‚·‚é•b‘¬‚ğZoA‘ã“ü
-            framsDistance = secoindsDistance*Time.deltaTime; //1ƒtƒŒ[ƒ€‚ ‚½‚è‚ÌˆÚ“®‹——£‚ğZo
+            distance = Vector2.Distance(startPos, endPos); //åˆæœŸä½ç½®ã¨ç§»å‹•å¾Œä½ç½®ã®è·é›¢ã‚’ä»£å…¥
+            secoindsDistance = distance / times ; //ç§»å‹•ã™ã‚‹ç§’é€Ÿã‚’ç®—å‡ºã€ä»£å…¥
+            framsDistance = secoindsDistance*Time.deltaTime; //1ãƒ•ãƒ¬ãƒ¼ãƒ ã‚ãŸã‚Šã®ç§»å‹•è·é›¢ã‚’ç®—å‡º
             movePercentage += framsDistance / distance;
 
             if(isReverse == false)
@@ -55,8 +55,8 @@ public class MovingBlock : MonoBehaviour
 
             if (movePercentage >= 1)
             {
-                isCanMove = false; //“®‚«‚ğ~‚ß‚é
-                isReverse = !isReverse; //ˆÚ“®•ûŒüƒtƒ‰ƒO‚ğ”½“]
+                isCanMove = false; //å‹•ãã‚’æ­¢ã‚ã‚‹
+                isReverse = !isReverse; //ç§»å‹•æ–¹å‘ãƒ•ãƒ©ã‚°ã‚’åè»¢
                 movePercentage = 0;
                 Invoke("Move", wait);
 
@@ -76,7 +76,7 @@ public class MovingBlock : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Player‚Ìe‚ğ©•ª‚Éw’è
+            //Playerã®è¦ªã‚’è‡ªåˆ†ã«æŒ‡å®š
             collision.transform.SetParent(transform);
         }
     }
@@ -85,12 +85,12 @@ public class MovingBlock : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Player‚Ìe‚ğ‚È‚­‚·null‚Å‰ğ•ú
+            //Playerã®è¦ªã‚’ãªãã™ï¼nullã§è§£æ”¾
             collision.transform.SetParent(null);
         }
     }
 
-    //ˆÚ“®”ÍˆÍ•\¦
+    //ç§»å‹•ç¯„å›²è¡¨ç¤º
     void OnDrawGizmosSelected()
     {
         Vector2 fromPos;
@@ -102,16 +102,16 @@ public class MovingBlock : MonoBehaviour
         {
             fromPos = startPos;
         }
-        //ˆÚ“®ü
+        //ç§»å‹•ç·š
         Gizmos.DrawLine(fromPos, new Vector2(fromPos.x + moveX, fromPos.y + moveY));
-        //ƒXƒvƒ‰ƒCƒg‚ÌƒTƒCƒY
+        //ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®ã‚µã‚¤ã‚º
         Vector2 size = GetComponent<SpriteRenderer>().size;
-        //‰ŠúˆÊ’u
+        //åˆæœŸä½ç½®
         Gizmos.DrawWireCube(fromPos, new Vector2(size.x, size.y));
-        //ˆÚ“®ˆÊ’u
+        //ç§»å‹•ä½ç½®
         Vector2 toPos = new Vector3(fromPos.x + moveX, fromPos.y + moveY);
         Gizmos.DrawWireCube(toPos, new Vector2(size.x, size.y));
-    }@
+    }ã€€
 
 
 

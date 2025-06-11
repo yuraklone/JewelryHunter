@@ -3,7 +3,17 @@ guid: eb3f89b4d044e3c4199d579ce5130640
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stageTitle: {instanceID: 0}
+  - gameClearSprite: {instanceID: 0}
+  - gameOverSprite: {instanceID: 0}
+  - buttonPanel: {instanceID: 0}
+  - restartButton: {instanceID: 0}
+  - nextButton: {instanceID: 0}
+  - timeText: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - meGameClear: {fileID: 8300000, guid: c2c5990fde1b84fc1b8686b491fe7c7f, type: 3}
+  - meGameOver: {fileID: 8300000, guid: cf50b63663cd74874a41f280d093a9d7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
